@@ -1,0 +1,105 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Choose Your Option</title> 
+    <link rel="stylesheet" href="css/styles.css"> 
+    <script src="https://unpkg.com/@webex/webex/dist/webex.min.js"></script> <!-- Loads the Webex JavaScript SDK from a CDN (for Webex functionality like calling, meetings, etc.) -->
+    <script src="js/alpine.js" defer></script> <!-- Loads Alpine.js library (used for handling dynamic behavior on the page) -->
+    <style>
+        body { /* Styles the body of the webpage */
+            display: flex; /* Uses flexbox to layout the body content */
+            flex-direction: column; /* Arranges child elements (like header, main, etc.) in a column */
+            align-items: center; /* Centers content horizontally */
+            justify-content: center; /* Centers content vertically */
+            height: 100vh; /* Sets the height to 100% of the viewport height */
+            margin: 0; /* Removes default margin */
+            background-color: #f9f9f9; /* Sets a light gray background color */
+            position: relative; /* Allows for absolute positioning of elements (like the back button) */
+        }
+        .options { /* Styles the container for the option buttons */
+            display: flex; /* Uses flexbox to arrange child elements (the buttons) horizontally */
+            justify-content: center; /* Centers the buttons horizontally */
+            gap: 60px; /* Adds space between the buttons */
+        }
+        .option { /* Styles individual option containers */
+            display: flex; /* Uses flexbox for the container */
+            flex-direction: column; /* Stacks image and label vertically */
+            align-items: center; /* Centers image and label horizontally */
+            text-align: center; /* Centers the text of the label */
+        }
+        .button { /* Styles the buttons to make them circular */
+            width: 150px; /* Sets the width of the button */
+            height: 150px; /* Sets the height of the button */
+            border-radius: 50%; /* Makes the button circular */
+            border: none; /* Removes the border */
+            overflow: hidden; /* Hides content that exceeds the circular button */
+            display: flex; /* Uses flexbox to center the image inside the button */
+            align-items: center; /* Vertically centers the content inside the button */
+            justify-content: center; /* Horizontally centers the content inside the button */
+            background-color: #007bff; /* Sets the button's background color to blue */
+            transition: background-color 0.3s; /* Adds a smooth transition when the background color changes */
+        }
+        .button:hover { /* Styles the button when hovered over */
+            background-color: #0056b3; /* Changes the background color to a darker blue on hover */
+        }
+        .button img { /* Styles the images inside the buttons */
+            width: 100%; /* Makes the image take up 100% of the button's width */
+            height: 100%; /* Makes the image take up 100% of the button's height */
+            object-fit: cover; /* Ensures the image covers the button area without distortion */
+            border-radius: 50%; /* Makes the image circular */
+        }
+        .label { /* Styles the text labels under each button */
+            margin-top: 10px; /* Adds space between the button and label */
+            font-size: 20px; /* Sets the font size for the label */
+            color: white; /* Sets the label color to white */
+        }
+        .back-button { /* Styles the back button */
+            position: absolute; /* Positions the button absolutely within the page */
+            bottom: 20px; /* Positions the button 20px from the bottom */
+            left: 50px; /* Positions the button 50px from the left side */
+            background-color: #add8e6; /* Sets a light blue background color */
+            color: black; /* Sets the text color to black */
+            border: none; /* Removes the border */
+            border-radius: 5px; /* Rounds the corners of the button */
+            padding: 10px 20px; /* Adds padding to the button */
+            font-size: 18px; /* Sets the font size for the text */
+            cursor: pointer; /* Changes the cursor to a pointer when hovered */
+            transition: background-color 0.3s; /* Adds a smooth transition for the background color */
+        }
+        .back-button:hover { /* Styles the back button when hovered over */
+            background-color: #87ceeb; /* Changes the background color to a lighter blue on hover */
+        }
+    </style>
+</head>
+<body x-data="{ call(service) { window.location.href = 'sip:' + service } }"> <!-- Alpine.js data object is initialized to handle button clicks -->
+    <header>
+        <h1>Choose Your Option</h1> 
+    </header>
+    
+    <main>
+        <div class="options"> <!-- buttons -->
+            <div class="option"> 
+                <button class="button" @click="call('9102')"> 
+                    <img src="images/reception.jpg" alt="Reception"> 
+                </button>
+                <div class="label">Reception</div> 
+            </div>
+            <div class="option"> 
+                <button class="button" @click="call('amel.nukicic@ignitetechnology.com')"> 
+                    <img src="images/shipping.jpg" alt="Shipping/Receiving"> 
+                </button>
+                <div class="label">Shipping/Receiving</div> 
+            </div>
+            <div class="option"> 
+                <button class="button" @click="window.location.href='https://eb3.autocab.net/#/32266'"> 
+                    <img src="images/taxi.png" alt="Book a Taxi"> 
+                </button>
+                <div class="label">Book a Taxi</div> 
+            </div>
+        </div>
+        <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+    </main>
+</body>
+</html>
